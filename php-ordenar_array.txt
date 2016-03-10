@@ -1,0 +1,37 @@
+/* Origem: http://php.net/manual/pt_BR/function.asort.php#71318
+ * Descrição: Ordena um array 2D por um campo do mesmo. Muito bom para usar com resultados de query.
+ * Exemplo: $props = 
+ * 				array()
+ * 					=> [1]
+ * 						=> [codigo] = 1
+ *	 					=> [proprietario] = John Deere
+ * 					=> [2]
+ * 						=> [codigo] = 4
+ * 						=> [proprietario] = Jorge da Silva
+ * 					=> [3]
+ * 						=> [codigo] = 2
+ *	 					=> [proprietario] = Ailson Jose Padoin
+ * 			$props = ordernar_array($props, 'codigo');
+ * 			dump($props);
+ * 				array()
+ * 					=> [1]
+ * 						=> [codigo] = 1
+ *	 					=> [proprietario] = John Deere
+ * 					=> [2]
+ * 						=> [codigo] = 2
+ * 						=> [proprietario] = Ailson Jose Padoin
+ * 					=> [3]
+ * 						=> [codigo] = 4
+ * 						=> [proprietario] = Jorge da Silva
+ * 	Mateus Siqueira
+ * 	10/03/2016					
+ */
+
+private function ordenar_array($records, $field) {
+	$hash = array();
+	foreach($records as $record) { $hash[$record[$field]] = $record; }
+	ksort($hash);
+	$records = array();
+	foreach($hash as $record) { $records []= $record; }
+	return $records;
+}
